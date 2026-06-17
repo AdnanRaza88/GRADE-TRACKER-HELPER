@@ -4,7 +4,12 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-DB_PATH = os.getenv("DB_PATH", "./gradepulse.db")
+# Railway detection and absolute temp path assignment
+if os.getenv("RAILWAY_ENVIRONMENT"):
+    DB_PATH = "/tmp/gradepulse.db"
+else:
+    DB_PATH = os.getenv("DB_PATH", "./gradepulse.db")
+
 DATABASE_URL = f"sqlite:///{DB_PATH}"
 
 engine = create_engine(
@@ -13,10 +18,8 @@ engine = create_engine(
     echo=False
 )
 
-
 def create_db_and_tables():
     SQLModel.metadata.create_all(engine)
-
 
 def get_session():
     with Session(engine) as session:
