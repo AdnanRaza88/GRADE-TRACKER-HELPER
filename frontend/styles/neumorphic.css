@@ -1,1 +1,510 @@
-/* Neumorphic styles */
+/* =====================================================================
+   GradePulse Neumorphic Light Theme
+   Color Palette:
+     BG:          #E8EEF6  (soft cool white-blue)
+     Shadow Dark: #B8C4D4  (slate shadow)
+     Shadow Light:#FFFFFF  (white highlight)
+     Primary:     #4F46E5  (indigo)
+     Secondary:   #0EA5E9  (sky blue)
+     Success:     #10B981  (emerald)
+     Warning:     #F59E0B  (amber)
+     Danger:      #EF4444  (rose)
+     Text:        #1E293B  (slate-900)
+     Muted:       #64748B  (slate-500)
+===================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* ── ROOT ──────────────────────────────────────────────────────────── */
+:root {
+  --bg:           #E8EEF6;
+  --shadow-dark:  #B8C4D4;
+  --shadow-light: #FFFFFF;
+  --primary:      #4F46E5;
+  --primary-dark: #3730A3;
+  --secondary:    #0EA5E9;
+  --success:      #10B981;
+  --warning:      #F59E0B;
+  --danger:       #EF4444;
+  --text:         #1E293B;
+  --muted:        #64748B;
+  --card-radius:  18px;
+  --btn-radius:   12px;
+  --transition:   0.25s ease;
+  --neu-raised:   8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light);
+  --neu-inset:    inset 4px 4px 10px var(--shadow-dark), inset -4px -4px 10px var(--shadow-light);
+  --neu-raised-sm:4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
+}
+
+/* ── GLOBAL ────────────────────────────────────────────────────────── */
+html, body, [class*="css"] {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  background-color: var(--bg) !important;
+  color: var(--text) !important;
+}
+
+.stApp {
+  background-color: var(--bg) !important;
+}
+
+/* ── MAIN CONTAINER ────────────────────────────────────────────────── */
+.main .block-container {
+  padding: 2rem 2.5rem 3rem 2.5rem !important;
+  max-width: 1400px !important;
+}
+
+/* ── SIDEBAR ───────────────────────────────────────────────────────── */
+[data-testid="stSidebar"] {
+  background: var(--bg) !important;
+  border-right: none !important;
+  box-shadow: 4px 0 20px rgba(79, 70, 229, 0.08) !important;
+}
+
+[data-testid="stSidebar"] .block-container {
+  padding: 1.5rem 1rem !important;
+}
+
+/* ── HEADINGS ──────────────────────────────────────────────────────── */
+h1 {
+  font-weight: 800 !important;
+  font-size: 2rem !important;
+  background: linear-gradient(135deg, var(--primary), var(--secondary)) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  margin-bottom: 0.25rem !important;
+}
+
+h2 {
+  font-weight: 700 !important;
+  font-size: 1.4rem !important;
+  color: var(--text) !important;
+}
+
+h3 {
+  font-weight: 600 !important;
+  color: var(--muted) !important;
+}
+
+/* ── NEU CARD ──────────────────────────────────────────────────────── */
+.neu-card {
+  background: var(--bg);
+  border-radius: var(--card-radius);
+  box-shadow: var(--neu-raised);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  transition: box-shadow var(--transition);
+}
+
+.neu-card:hover {
+  box-shadow: 10px 10px 20px var(--shadow-dark), -10px -10px 20px var(--shadow-light);
+}
+
+/* ── METRIC CARDS ──────────────────────────────────────────────────── */
+.metric-card {
+  background: var(--bg);
+  border-radius: var(--card-radius);
+  box-shadow: var(--neu-raised);
+  padding: 1.4rem 1.6rem;
+  text-align: center;
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.metric-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: linear-gradient(180deg, var(--primary), var(--secondary));
+  border-radius: 4px 0 0 4px;
+}
+
+.metric-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 12px 12px 24px var(--shadow-dark), -12px -12px 24px var(--shadow-light);
+}
+
+.metric-value {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1;
+  margin: 0.4rem 0;
+}
+
+.metric-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.metric-icon {
+  font-size: 1.6rem;
+  margin-bottom: 0.3rem;
+}
+
+/* ── BUTTONS ───────────────────────────────────────────────────────── */
+.stButton > button {
+  background: linear-gradient(135deg, var(--primary), #6366F1) !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  border-radius: var(--btn-radius) !important;
+  padding: 0.6rem 1.4rem !important;
+  font-weight: 600 !important;
+  font-size: 0.9rem !important;
+  letter-spacing: 0.03em !important;
+  box-shadow: var(--neu-raised-sm) !important;
+  transition: all var(--transition) !important;
+  cursor: pointer !important;
+}
+
+.stButton > button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 6px 6px 14px var(--shadow-dark), -6px -6px 14px var(--shadow-light) !important;
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary)) !important;
+}
+
+.stButton > button:active {
+  transform: translateY(0) !important;
+  box-shadow: var(--neu-inset) !important;
+}
+
+/* Danger button (secondary) */
+.stButton > button[kind="secondary"] {
+  background: linear-gradient(135deg, var(--danger), #F87171) !important;
+}
+
+/* ── TEXT INPUTS ───────────────────────────────────────────────────── */
+.stTextInput > div > div > input,
+.stNumberInput > div > div > input,
+.stTextArea > div > div > textarea {
+  background: var(--bg) !important;
+  border: none !important;
+  border-radius: 10px !important;
+  box-shadow: var(--neu-inset) !important;
+  color: var(--text) !important;
+  font-family: 'Inter', sans-serif !important;
+  padding: 0.6rem 0.9rem !important;
+  transition: box-shadow var(--transition) !important;
+}
+
+.stTextInput > div > div > input:focus,
+.stNumberInput > div > div > input:focus,
+.stTextArea > div > div > textarea:focus {
+  outline: none !important;
+  box-shadow: var(--neu-inset), 0 0 0 2px rgba(79, 70, 229, 0.3) !important;
+}
+
+/* ── SELECTBOX ─────────────────────────────────────────────────────── */
+.stSelectbox > div > div,
+.stMultiSelect > div > div {
+  background: var(--bg) !important;
+  border: none !important;
+  border-radius: 10px !important;
+  box-shadow: var(--neu-inset) !important;
+  color: var(--text) !important;
+}
+
+/* ── DATAFRAME / TABLE ─────────────────────────────────────────────── */
+.stDataFrame {
+  border-radius: var(--card-radius) !important;
+  box-shadow: var(--neu-raised) !important;
+  overflow: hidden !important;
+}
+
+iframe[data-testid="stDataFrameResizable"] {
+  border-radius: var(--card-radius) !important;
+}
+
+/* ── METRICS (built-in) ────────────────────────────────────────────── */
+[data-testid="stMetric"] {
+  background: var(--bg) !important;
+  border-radius: var(--card-radius) !important;
+  box-shadow: var(--neu-raised) !important;
+  padding: 1rem 1.2rem !important;
+}
+
+[data-testid="stMetricValue"] {
+  color: var(--primary) !important;
+  font-weight: 800 !important;
+}
+
+/* ── FILE UPLOADER ─────────────────────────────────────────────────── */
+[data-testid="stFileUploader"] {
+  background: var(--bg) !important;
+  border-radius: var(--card-radius) !important;
+  box-shadow: var(--neu-raised) !important;
+  padding: 1rem !important;
+}
+
+[data-testid="stFileUploaderDropzone"] {
+  background: var(--bg) !important;
+  border: 2px dashed var(--shadow-dark) !important;
+  border-radius: 12px !important;
+  transition: border-color var(--transition) !important;
+}
+
+[data-testid="stFileUploaderDropzone"]:hover {
+  border-color: var(--primary) !important;
+}
+
+/* ── EXPANDER ──────────────────────────────────────────────────────── */
+details[data-testid="stExpander"] {
+  background: var(--bg) !important;
+  border: none !important;
+  border-radius: var(--card-radius) !important;
+  box-shadow: var(--neu-raised) !important;
+}
+
+/* ── SUCCESS / WARNING / ERROR ALERTS ─────────────────────────────── */
+.stSuccess {
+  background: rgba(16, 185, 129, 0.12) !important;
+  border-left: 4px solid var(--success) !important;
+  border-radius: 10px !important;
+  color: #065F46 !important;
+}
+
+.stWarning {
+  background: rgba(245, 158, 11, 0.12) !important;
+  border-left: 4px solid var(--warning) !important;
+  border-radius: 10px !important;
+  color: #78350F !important;
+}
+
+.stError {
+  background: rgba(239, 68, 68, 0.12) !important;
+  border-left: 4px solid var(--danger) !important;
+  border-radius: 10px !important;
+  color: #7F1D1D !important;
+}
+
+.stInfo {
+  background: rgba(14, 165, 233, 0.12) !important;
+  border-left: 4px solid var(--secondary) !important;
+  border-radius: 10px !important;
+  color: #0C4A6E !important;
+}
+
+/* ── GRADE BADGE ───────────────────────────────────────────────────── */
+.grade-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+}
+
+.badge-A, .badge-Aplus {
+  background: rgba(16, 185, 129, 0.15);
+  color: #065F46;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+}
+
+.badge-B, .badge-Bplus {
+  background: rgba(14, 165, 233, 0.15);
+  color: #0C4A6E;
+  border: 1px solid rgba(14, 165, 233, 0.4);
+}
+
+.badge-C, .badge-Cplus {
+  background: rgba(245, 158, 11, 0.15);
+  color: #78350F;
+  border: 1px solid rgba(245, 158, 11, 0.4);
+}
+
+.badge-D {
+  background: rgba(249, 115, 22, 0.15);
+  color: #7C2D12;
+  border: 1px solid rgba(249, 115, 22, 0.4);
+}
+
+.badge-F {
+  background: rgba(239, 68, 68, 0.15);
+  color: #7F1D1D;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+}
+
+/* ── ROUTINE CARDS ─────────────────────────────────────────────────── */
+.routine-section {
+  background: var(--bg);
+  border-radius: var(--card-radius);
+  box-shadow: var(--neu-raised);
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 1rem;
+  border-left: 4px solid var(--primary);
+  transition: all var(--transition);
+}
+
+.routine-section:hover {
+  transform: translateX(3px);
+  border-left-color: var(--secondary);
+}
+
+.routine-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.routine-time {
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-weight: 500;
+  margin-bottom: 0.6rem;
+  background: rgba(48, 46, 84, 0.08);
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+/* ── TIPS CARD ─────────────────────────────────────────────────────── */
+.tip-card {
+  background: var(--bg);
+  border-radius: 14px;
+  box-shadow: var(--neu-raised-sm);
+  padding: 1rem 1.3rem;
+  margin-bottom: 0.75rem;
+  border-left: 3px solid var(--secondary);
+  transition: all var(--transition);
+}
+
+.tip-card:hover {
+  box-shadow: var(--neu-raised);
+  transform: translateX(2px);
+}
+
+/* ── SIDEBAR NAV ITEMS ─────────────────────────────────────────────── */
+[data-testid="stSidebarNav"] a {
+  border-radius: 10px !important;
+  margin: 2px 0 !important;
+  transition: all var(--transition) !important;
+  font-weight: 500 !important;
+  color: var(--text) !important;
+}
+
+[data-testid="stSidebarNav"] a:hover {
+  background: rgba(79, 70, 229, 0.1) !important;
+  color: var(--primary) !important;
+}
+
+[data-testid="stSidebarNav"] a[aria-current="page"] {
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.15), rgba(14, 165, 233, 0.1)) !important;
+  color: var(--primary) !important;
+  font-weight: 700 !important;
+  box-shadow: var(--neu-raised-sm) !important;
+}
+
+/* ── CHECKBOX / RADIO ──────────────────────────────────────────────── */
+.stCheckbox label, .stRadio label {
+  font-weight: 500 !important;
+  color: var(--text) !important;
+}
+
+/* ── PROGRESS BAR ──────────────────────────────────────────────────── */
+.stProgress > div > div > div {
+  background: linear-gradient(90deg, var(--primary), var(--secondary)) !important;
+  border-radius: 10px !important;
+}
+
+/* ── DIVIDER ───────────────────────────────────────────────────────── */
+hr {
+  border: none !important;
+  height: 1px !important;
+  background: linear-gradient(90deg, transparent, var(--shadow-dark), transparent) !important;
+  margin: 1.5rem 0 !important;
+}
+
+/* ── SCROLLBAR ─────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb {
+  background: var(--shadow-dark);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+
+/* ── ANIMATIONS ────────────────────────────────────────────────────── */
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.stApp .main {
+  animation: fadeSlideIn 0.4s ease forwards;
+}
+
+/* ── FORM SUBMIT BUTTON ────────────────────────────────────────────── */
+[data-testid="stFormSubmitButton"] > button {
+  width: 100% !important;
+  background: linear-gradient(135deg, var(--primary), var(--secondary)) !important;
+  color: white !important;
+  border-radius: var(--btn-radius) !important;
+  border: none !important;
+  font-weight: 700 !important;
+  font-size: 1rem !important;
+  padding: 0.75rem 1rem !important;
+  box-shadow: var(--neu-raised-sm) !important;
+  transition: all var(--transition) !important;
+}
+
+[data-testid="stFormSubmitButton"] > button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: var(--neu-raised) !important;
+}
+
+/* ── TOGGLE / SWITCH ───────────────────────────────────────────────── */
+.stToggle [data-baseweb="checkbox"] {
+  accent-color: var(--primary) !important;
+}
+
+
+/* Card Container with Pronounced 3D Neumorphic look */
+.neumorphic-card {
+    background: #eef2f7;
+    border-radius: 20px;
+    padding: 24px;
+    margin-bottom: 20px;
+    /* Soft top-left light source, and prominent bottom-right dark shadow */
+    box-shadow: 8px 8px 16px #c8d0d9, -8px -8px 16px #ffffff;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.neumorphic-card:hover {
+    /* Subtle push down or float up on hover */
+    transform: translateY(-4px);
+    box-shadow: 12px 12px 20px #c0c9d4, -12px -12px 20px #ffffff;
+}
+
+/* 3D Pressed effect for inner elements */
+.neumorphic-inset {
+    background: #eef2f7;
+    border-radius: 12px;
+    padding: 10px 15px;
+    box-shadow: inset 4px 4px 8px #d1d9e6, inset -4px -4px 8px #ffffff;
+}
+
+/* 3D Button Style */
+.stButton > button {
+    background: #eef2f7 !important;
+    color: #4a5568 !important;
+    border-radius: 12px !important;
+    border: none !important;
+    font-weight: 600 !important;
+    padding: 10px 20px !important;
+    box-shadow: 5px 5px 10px #c8d0d9, -5px -5px 10px #ffffff !important;
+    transition: all 0.2s ease !important;
+}
+
+.stButton > button:active {
+    box-shadow: inset 3px 3px 6px #c8d0d9, inset -3px -3px 6px #ffffff !important;
+}
