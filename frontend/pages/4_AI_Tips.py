@@ -1,0 +1,1 @@
+# AI Tips page
