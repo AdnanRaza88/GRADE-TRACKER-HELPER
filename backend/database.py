@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# Railway detection and absolute temp path assignment
+# Railway writable tmp zone check
 if os.getenv("RAILWAY_ENVIRONMENT"):
     DB_PATH = "/tmp/gradepulse.db"
 else:
