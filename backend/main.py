@@ -20,7 +20,7 @@ from ai_features import get_study_tips, get_daily_routine
 app = FastAPI(
     title="GradePulse API",
     description=(
-        "## 🎓 GradePulse — Student Grade Tracker\n\n"
+        "🎓 GradePulse — Student Grade Tracker\n\n"
         "Full-stack academic performance tracker with:\n"
         "- CRUD grade management\n"
         "- CSV/Excel bulk upload\n"
