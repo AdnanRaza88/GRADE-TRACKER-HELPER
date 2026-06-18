@@ -1,7 +1,4 @@
-"""
-API Client — all HTTP calls to the GradePulse backend.
-Reads API_BASE_URL from environment or falls back to localhost:8000.
-"""
+
 import os
 import requests
 from typing import Optional
@@ -11,8 +8,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-API_BASE_URL = os.getenv("API_BASE_URL", "http://localhost:8000").rstrip("/")
-TIMEOUT = 30  # seconds
+API_BASE_URL = os.getenv("API_BASE_URL", "https://grade-tracker-helper-production.up.railway.app").rstrip("/")
+TIMEOUT = 30  
 
 
 def _handle_response(response: requests.Response) -> dict | list:
@@ -26,7 +23,7 @@ def _handle_response(response: requests.Response) -> dict | list:
     return response.json()
 
 
-# ─────────────────────────── HEALTH ───────────────────────────────────
+
 
 def health_check() -> bool:
     try:
@@ -36,7 +33,7 @@ def health_check() -> bool:
         return False
 
 
-# ─────────────────────────── GRADES ───────────────────────────────────
+
 
 def get_all_grades(semester: Optional[str] = None, subject: Optional[str] = None) -> list:
     params = {}
@@ -68,7 +65,7 @@ def delete_grade(grade_id: int) -> dict:
     return _handle_response(r)
 
 
-# ─────────────────────────── STUDENT ──────────────────────────────────
+
 
 def get_student_grades(roll_number: str) -> list:
     r = requests.get(
@@ -77,7 +74,7 @@ def get_student_grades(roll_number: str) -> list:
     return _handle_response(r)
 
 
-# ─────────────────────────── BULK UPLOAD ──────────────────────────────
+
 
 def bulk_upload(file_bytes: bytes, filename: str) -> dict:
     ext = filename.rsplit(".", 1)[-1].lower()
@@ -90,7 +87,7 @@ def bulk_upload(file_bytes: bytes, filename: str) -> dict:
     return _handle_response(r)
 
 
-# ─────────────────────────── AI ───────────────────────────────────────
+
 
 def get_study_tips(grade_id: int) -> dict:
     r = requests.post(
@@ -108,7 +105,7 @@ def get_routine(grade_id: int, payload: dict) -> dict:
     return _handle_response(r)
 
 
-# ─────────────────────────── CONFIG ───────────────────────────────────
+
 
 def get_grading_config() -> list:
     r = requests.get(f"{API_BASE_URL}/grades/config", timeout=TIMEOUT)
@@ -129,7 +126,7 @@ def delete_grading_config(config_id: int) -> dict:
     return _handle_response(r)
 
 
-# ─────────────────────────── EXPORT ───────────────────────────────────
+
 
 def export_grades_csv() -> bytes:
     r = requests.get(
