@@ -1,6 +1,6 @@
-# GradePulse — Student Grade Tracker
+GradePulse — Student Grade Tracker
 
-> **Project 8 · Adnan · Roll No. 0267**
+> **Project  · Adnan raza
 > Full-stack academic performance tracker with AI-powered study assistance.
 
 ---
