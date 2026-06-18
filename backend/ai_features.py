@@ -42,7 +42,7 @@ def get_daily_routine(weak_subjects: list, study_hours: int, preferred_time: str
     
     chain = prompt | llm
     response = chain.invoke({
-        "subjects": ", ".join(weak_subjects),
+        "subjects": " ".join(weak_subjects),
         "hours": study_hours,
         "time": preferred_time
     })
