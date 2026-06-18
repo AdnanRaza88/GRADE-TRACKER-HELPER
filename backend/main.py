@@ -30,7 +30,7 @@ app = FastAPI(
         "- Export (CSV / Excel / JSON)"
     ),
     version="1.0.0",
-    contact={"name": "Adnan", "email": "adnan@gradepulse.dev"},
+    contact={"name": "Adnan", "email": "adnanrazaar786@gmail.com"},
 )
 
 app.add_middleware(
